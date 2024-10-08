@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/doctor"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/ontech_health_mobile"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/login_account"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint = "@string/welcome_account_hint"
+        android:layout_marginTop="60dp"
+        />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint = "@string/welcome_password_hint"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/welcome_log_in_button"
+        android:textSize="20sp"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/welcome_create_account_button"
+        />
+
+
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="ontech_health_mobile">ONTech Health Mobile</string>
+    <string name="welcome_account_hint">Account Number</string>
+    <string name="welcome_password_hint">Password</string>
+    <string name="welcome_log_in_button">Log In</string>
+    <string name="welcome_create_account_button">Create Account</string>
+    <string name="welcome_forget_password_button">Forget Password</string>
+    <string name="register_create_account_toolbar">Create Account</string>
+    <string name="register_create_account_button">Create Account</string>
+    <string name="register_security_question_hint">Security Question</string>
+    <string name="register_security_question_answer">Answer</string>
+</resources>
