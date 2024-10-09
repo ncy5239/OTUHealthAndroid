@@ -25,6 +25,7 @@
 
         <activity android:name=".activity.user.RegisterActivity" />
         <activity android:name=".activity.user.MainPageActivity" />
+        <activity android:name=".activity.user.UserInformationActivity" />
 
     </application>
 

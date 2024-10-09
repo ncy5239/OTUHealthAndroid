@@ -6,16 +6,19 @@
     <item
         android:id="@+id/navigation_health_manage"
         android:icon="@drawable/health_manage"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:title="health manage"/>
 
     <item
         android:id="@+id/navigation_disease_consult"
         android:icon="@drawable/disease_consult"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:title="disease consult"/>
 
     <item
         android:id="@+id/navigation_user_profile"
         android:icon="@drawable/user_profile"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:title="user profile"/>
 
 </menu>
