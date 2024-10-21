@@ -34,11 +34,11 @@
         />
 
     <EditText
-        android:id="@+id/register_account"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:hint = "@string/welcome_account_hint"
+        android:hint = "Email Number"
         android:layout_marginTop="40dp"
         />
 
@@ -52,22 +52,14 @@
         />
 
     <EditText
-        android:id="@+id/register_question"
+        android:id="@+id/make_sure_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/register_security_question_hint"
+        android:hint = "Repeat Password"
         android:layout_marginTop="10dp"
-        android:inputType="text"
+        android:inputType="textPassword"
         />
 
-    <EditText
-        android:id="@+id/register_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint = "@string/register_security_question_answer"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        />
 
     <Button
         android:id="@+id/register_create_button"
