@@ -36,7 +36,7 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("https://otu-healthcare.s3.us-east-2.amazonaws.com/.next/server/app/index.html");
+        webView.loadUrl("http://otu-healthcare-h5.s3.us-east-2.amazonaws.com/index.html");
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
