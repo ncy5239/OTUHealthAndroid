@@ -16,7 +16,7 @@ import com.example.myapp.activity.user.MainPageActivity;
 import com.example.myapp.activity.user.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+    //main
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
