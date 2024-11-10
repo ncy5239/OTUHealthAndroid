@@ -3,7 +3,9 @@
 
     <!-- 允许 ec2-3-142-76-164.us-east-2.compute.amazonaws.com 的明文流量 -->
     <domain-config cleartextTrafficPermitted="true">
+      
         <domain includeSubdomains="true">ec2-3-142-76-164.us-east-2.compute.amazonaws.com</domain>
+
     </domain-config>
 
     <!-- 保留现有的允许的其他域 -->
