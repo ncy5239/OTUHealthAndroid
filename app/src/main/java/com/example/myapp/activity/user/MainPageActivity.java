@@ -46,7 +46,7 @@ public class MainPageActivity extends AppCompatActivity {
             webSettings.setDomStorageEnabled(true);  // 启用DOM存储
 
             // 设置自定义的 User-Agent
-            webSettings.setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36");
+            //webSettings.setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36");
 
             // 设置 WebViewClient 和 WebChromeClient
             webView.setWebViewClient(new WebViewClient() {
