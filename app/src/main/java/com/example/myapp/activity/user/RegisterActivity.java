@@ -2,7 +2,6 @@ package com.example.myapp.activity.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,15 +9,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapp.R;
+import com.example.myapp.activity.user.MainPageActivity;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -27,109 +27,85 @@ import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText registerPassword, makeSurePassword, email;
-    private Button createAccountButton;
+    private static final String REGISTER_URL = "http://3.142.76.164/auth/register";
+    private OkHttpClient client = new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // 绑定 Toolbar
-        Toolbar toolbar = findViewById(R.id.register_toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        EditText emailEditText = findViewById(R.id.email);
+        EditText passwordEditText = findViewById(R.id.register_password);
+        EditText confirmPasswordEditText = findViewById(R.id.make_sure_password);
+        Button registerButton = findViewById(R.id.register_create_button);
 
-        // 绑定 EditText 控件
-        registerPassword = findViewById(R.id.register_password);
-        makeSurePassword = findViewById(R.id.make_sure_password);
-        email = findViewById(R.id.email);
-
-        // 绑定 Button 控件
-        createAccountButton = findViewById(R.id.register_create_button);
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 获取用户输入的邮箱和密码
-                String password = registerPassword.getText().toString();
-                String confirmPassword = makeSurePassword.getText().toString();
-                String userEmail = email.getText().toString();
+                String email = emailEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                String confirmPassword = confirmPasswordEditText.getText().toString();
 
-                // 检查是否有未填信息
-                if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
-                    Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                // 检查是否有空值
+                if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // 检查两个输入是否一致
+                // 检查两次密码是否一致
                 if (!password.equals(confirmPassword)) {
-                    // 如果密码不一致
                     Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // 进行注册请求
-                performRegistration(userEmail, password);
+                registerUser(email, password);
             }
         });
     }
 
-    private void performRegistration(String email, String password) {
-        // 创建 JSON 对象
-        JSONObject jsonObject = new JSONObject();
+    private void registerUser(String email, String password) {
         try {
+            // 创建 JSON 请求体
+            JSONObject jsonObject = new JSONObject();
             jsonObject.put("email", email);
+            jsonObject.put("username", email); // 使用邮箱作为用户名
             jsonObject.put("password", password);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Error creating JSON", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        // 创建 OkHttpClient 实例
-        OkHttpClient client = new OkHttpClient();
-        MediaType JSON = MediaType.get("application/json; charset=utf-8");
+            RequestBody requestBody = RequestBody.create(jsonObject.toString(), MediaType.get("application/json; charset=utf-8"));
+            Request request = new Request.Builder()
+                    .url(REGISTER_URL)
+                    .post(requestBody)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
 
-        RequestBody body = RequestBody.create(jsonObject.toString(), JSON);
-        Request request = new Request.Builder()
-                .url("http://ec2-18-222-203-103.us-east-2.compute.amazonaws.com/users/") // 注册接口 URL
-                .post(body)
-                .addHeader("Content-Type", "application/json")
-                .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(RegisterActivity.this, "Network Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                    Log.e("Register Error", e.getMessage(), e);
+                }
 
-        // 在后台线程中执行网络请求
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Response response = client.newCall(request).execute();
-                    String responseBody = response.body() != null ? response.body().string() : "No response body";
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
                         runOnUiThread(() -> {
-                            Toast.makeText(RegisterActivity.this, "Registration Successful!!!!!!!!", Toast.LENGTH_SHORT).show();
-                            // 在这里，可以存储用户 ID 或令牌，并跳转到填写详细信息的页面
+                            Toast.makeText(RegisterActivity.this, "User registered successfully!", Toast.LENGTH_SHORT).show();
+                            // 注册成功后跳转到登录页面
+                            //Intent intent = new Intent(RegisterActivity.this, MainPageActivity.class);
+                            //startActivity(intent);
                             finish();
                         });
                     } else {
-                        // 打印 Bad Request 详细内容
-                        Log.e("BadRequest", "Code: " + response.code() + ", Error Body: " + responseBody);
-                        runOnUiThread(() -> {
-                            Toast.makeText(RegisterActivity.this,
-                                    "Registration Failed: " + response.code() + " - " + responseBody,
-                                    Toast.LENGTH_LONG).show();
-                        });
-
+                        String errorMessage = response.code() == 400 ? "Registration failed" : "Server Error";
+                        runOnUiThread(() -> Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show());
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    runOnUiThread(() -> Toast.makeText(RegisterActivity.this, "Network Error", Toast.LENGTH_SHORT).show());
                 }
-            }
-        }).start();
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to create request", Toast.LENGTH_SHORT).show();
+        }
     }
 }
