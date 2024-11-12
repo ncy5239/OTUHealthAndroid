@@ -8,21 +8,22 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!-- Toolbar 不变 -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/register_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title = "Register"
+        app:title="Register"
         app:titleTextColor="@color/white"
         android:background="@color/blue"
-        app:navigationIcon="@drawable/back"
-        />
+        app:navigationIcon="@drawable/back" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:src="@drawable/register"
-        />
+        android:src="@drawable/register" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,45 +31,58 @@
         android:text="@string/register_create_account_toolbar"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:textSize="25sp"
-        />
+        android:textSize="25sp" />
 
+    <!-- 修改后的 EditText 和 Button 元素带有左右 margin -->
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:hint = "Email Number"
+        android:hint="Email Number"
         android:layout_marginTop="40dp"
-        />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <EditText
         android:id="@+id/register_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/welcome_password_hint"
+        android:hint="@string/welcome_password_hint"
         android:layout_marginTop="10dp"
         android:inputType="textPassword"
-        />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <EditText
         android:id="@+id/make_sure_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "Repeat Password"
+        android:hint="Repeat Password"
         android:layout_marginTop="10dp"
         android:inputType="textPassword"
-        />
-
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/register_create_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/register_create_account_button"
         android:textSize="20sp"
-        android:gravity="center_horizontal|center_vertical"
-        />
+        android:gravity="center_horizontal|center_vertical" />
+    <Button
+        android:id="@+id/register_cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Cancel"
+        android:textSize="20sp"
+        android:gravity="center_horizontal|center_vertical" />
 
 </LinearLayout>

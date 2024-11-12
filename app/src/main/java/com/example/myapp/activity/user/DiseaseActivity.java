@@ -48,10 +48,12 @@ public class DiseaseActivity extends AppCompatActivity {
 
                 if (itemId == R.id.navigation_health_manage) {
                     startActivity(new Intent(DiseaseActivity.this, MainPageActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 } else if (itemId == R.id.navigation_user_profile) {
                     startActivity(new Intent(DiseaseActivity.this, UserInformationActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 }

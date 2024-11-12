@@ -41,7 +41,7 @@ public class UserInformationActivity extends AppCompatActivity {
     private String jwtToken;
     private OkHttpClient client = new OkHttpClient();
 
-    private EditText nameEditText, ageEditText, weightEditText, annotationEditText;
+    private EditText nameEditText, ageEditText, weightEditText, heightEditText, systolicEditText, diastolicEditText;
     private RadioGroup genderRadioGroup;
 
     @Override
@@ -49,11 +49,9 @@ public class UserInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userinformation);
 
-        // Load JWT token from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         jwtToken = sharedPreferences.getString(TOKEN_KEY, null);
 
-        // Check if jwtToken exists; if not, prompt re-login
         if (jwtToken == null) {
             Toast.makeText(this, "Please log in again", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(UserInformationActivity.this, MainActivity.class));
@@ -65,7 +63,9 @@ public class UserInformationActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.Name);
         ageEditText = findViewById(R.id.Age);
         weightEditText = findViewById(R.id.Weight);
-        annotationEditText = findViewById(R.id.Annotation);
+        heightEditText = findViewById(R.id.Height);
+        systolicEditText = findViewById(R.id.systolic);
+        diastolicEditText = findViewById(R.id.diastolic);
         genderRadioGroup = findViewById(R.id.rg_gender);
 
         Button saveButton = findViewById(R.id.user_profile_save);
@@ -74,9 +74,9 @@ public class UserInformationActivity extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.user_profile_cancle);
         cancelButton.setOnClickListener(v -> {
             startActivity(new Intent(UserInformationActivity.this, MainPageActivity.class));
+            overridePendingTransition(0, 0);
             finish();
         });
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_user_profile);
@@ -88,10 +88,12 @@ public class UserInformationActivity extends AppCompatActivity {
 
                 if (itemId == R.id.navigation_health_manage) {
                     startActivity(new Intent(UserInformationActivity.this, MainPageActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 } else if (itemId == R.id.navigation_disease_consult) {
                     startActivity(new Intent(UserInformationActivity.this, DiseaseActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 }
@@ -100,14 +102,13 @@ public class UserInformationActivity extends AppCompatActivity {
             }
         });
 
-        // Load user information on activity start
         loadUserInformation();
     }
 
     private void loadUserInformation() {
         Request request = new Request.Builder()
                 .url(BASE_URL)
-                .addHeader("Authorization", "Bearer " + jwtToken) // Use loaded jwtToken
+                .addHeader("Authorization", "Bearer " + jwtToken)
                 .get()
                 .build();
 
@@ -140,7 +141,12 @@ public class UserInformationActivity extends AppCompatActivity {
             nameEditText.setText(userData.getString("username"));
             ageEditText.setText(String.valueOf(userData.getInt("age")));
             weightEditText.setText(String.valueOf(userData.getInt("weight")));
-            annotationEditText.setText(userData.optString("annotation", ""));
+            heightEditText.setText(String.valueOf(userData.getInt("height")));
+            JSONObject bloodPressure = userData.optJSONObject("bloodPressure");
+            if (bloodPressure != null) {
+                systolicEditText.setText(String.valueOf(bloodPressure.optInt("systolic")));
+                diastolicEditText.setText(String.valueOf(bloodPressure.optInt("diastolic")));
+            }
 
             String gender = userData.getString("gender");
             if (gender.equalsIgnoreCase("male")) {
@@ -161,6 +167,12 @@ public class UserInformationActivity extends AppCompatActivity {
             jsonObject.put("username", nameEditText.getText().toString());
             jsonObject.put("age", Integer.parseInt(ageEditText.getText().toString()));
             jsonObject.put("weight", Integer.parseInt(weightEditText.getText().toString()));
+            jsonObject.put("height", Integer.parseInt(heightEditText.getText().toString()));
+
+            JSONObject bloodPressure = new JSONObject();
+            bloodPressure.put("systolic", Integer.parseInt(systolicEditText.getText().toString()));
+            bloodPressure.put("diastolic", Integer.parseInt(diastolicEditText.getText().toString()));
+            jsonObject.put("bloodPressure", bloodPressure);
 
             int selectedGenderId = genderRadioGroup.getCheckedRadioButtonId();
             String gender = selectedGenderId == R.id.rb_male ? "male" : selectedGenderId == R.id.rb_female ? "female" : "other";
@@ -169,7 +181,7 @@ public class UserInformationActivity extends AppCompatActivity {
             RequestBody requestBody = RequestBody.create(jsonObject.toString(), MediaType.get("application/json; charset=utf-8"));
             Request request = new Request.Builder()
                     .url(BASE_URL)
-                    .addHeader("Authorization", "Bearer " + jwtToken) // Use loaded jwtToken
+                    .addHeader("Authorization", "Bearer " + jwtToken)
                     .put(requestBody)
                     .build();
 
@@ -186,8 +198,8 @@ public class UserInformationActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         runOnUiThread(() -> Toast.makeText(UserInformationActivity.this, "User info updated", Toast.LENGTH_SHORT).show());
                         startActivity(new Intent(UserInformationActivity.this, MainPageActivity.class));
+                        overridePendingTransition(0, 0);
                         finish();
-
                     } else {
                         Log.e("Update Error", "Code: " + response.code() + ", Body: " + responseBody);
                         runOnUiThread(() -> {

@@ -39,7 +39,13 @@ public class RegisterActivity extends AppCompatActivity {
         EditText passwordEditText = findViewById(R.id.register_password);
         EditText confirmPasswordEditText = findViewById(R.id.make_sure_password);
         Button registerButton = findViewById(R.id.register_create_button);
-
+        Button cancelButton = findViewById(R.id.register_cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+            }
+        });
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

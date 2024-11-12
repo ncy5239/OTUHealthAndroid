@@ -31,6 +31,8 @@
         android:layout_height="50dp"
         android:hint = "@string/welcome_account_hint"
         android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
 
     <EditText
@@ -40,6 +42,8 @@
         android:hint = "@string/welcome_password_hint"
         android:layout_marginTop="10dp"
         android:inputType="textPassword"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
 
     <Button
@@ -50,6 +54,8 @@
         android:text="@string/welcome_log_in_button"
         android:textSize="20sp"
         android:gravity="center_horizontal|center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
 
 
@@ -61,6 +67,8 @@
         android:textSize="20sp"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/welcome_create_account_button"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
 
 

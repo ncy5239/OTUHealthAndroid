@@ -44,6 +44,9 @@ public class MainPageActivity extends AppCompatActivity {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webSettings.setDomStorageEnabled(true);  // 启用DOM存储
+            // 设置WebView的自适应属性
+            webSettings.setLoadWithOverviewMode(true); // 缩放内容以适应WebView的宽度
+            webSettings.setUseWideViewPort(true);      // 启用宽视口支持
 
             // 设置自定义的 User-Agent
             //webSettings.setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36");
@@ -79,10 +82,12 @@ public class MainPageActivity extends AppCompatActivity {
 
                 if (itemId == R.id.navigation_disease_consult) {
                     startActivity(new Intent(MainPageActivity.this, DiseaseActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 } else if (itemId == R.id.navigation_user_profile) {
                     startActivity(new Intent(MainPageActivity.this, UserInformationActivity.class));
+                    overridePendingTransition(0, 0);
                     finish();
                     return true;
                 }

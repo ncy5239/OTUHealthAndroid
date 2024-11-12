@@ -7,7 +7,6 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-<!-- 包含所有内容的 ScrollView，防止键盘遮挡输入框 -->
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -45,6 +44,8 @@ tools:context=".MainActivity">
             android:hint = "Full Name"
             android:layout_marginTop="40dp"
             android:inputType="textPersonName"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             />
 
         <TextView
@@ -53,13 +54,18 @@ tools:context=".MainActivity">
             android:text="Gender"
             android:textSize="18sp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
 
         <RadioGroup
             android:id="@+id/rg_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <RadioButton
                 android:id="@+id/rb_male"
@@ -88,24 +94,50 @@ tools:context=".MainActivity">
             android:hint = "Age"
             android:layout_marginTop="10dp"
             android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             />
 
         <EditText
             android:id="@+id/Weight"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint = "Weight /kg"
+            android:hint = "Weight /Lbs"
             android:layout_marginTop="10dp"
             android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             />
 
         <EditText
-            android:id="@+id/Annotation"
+            android:id="@+id/Height"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint = "Annotation"
+            android:hint = "Height /cm"
             android:layout_marginTop="10dp"
             android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+        <EditText
+            android:id="@+id/systolic"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint = "Blood Pressure: systolic"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+        <EditText
+            android:id="@+id/diastolic"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint = "Blood Pressure: diastolic"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             />
 
         <LinearLayout
@@ -114,7 +146,9 @@ tools:context=".MainActivity">
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <Button
                 android:id="@+id/user_profile_cancle"
@@ -123,8 +157,9 @@ tools:context=".MainActivity">
                 android:layout_weight="1"
                 android:text="Cancel"
                 android:textSize="20sp"
-                android:textColor="@color/black"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                />
 
             <Button
                 android:id="@+id/user_profile_save"

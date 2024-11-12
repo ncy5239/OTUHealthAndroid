@@ -5,20 +5,20 @@
 
     <item
         android:id="@+id/navigation_health_manage"
-        android:icon="@drawable/health_manage"
+        android:icon="@drawable/disease_consult"
         app:showAsAction="always"
-        android:title="health manage"/>
+        android:title="AI Consult"/>
 
     <item
         android:id="@+id/navigation_disease_consult"
-        android:icon="@drawable/disease_consult"
+        android:icon="@drawable/health_manage"
         app:showAsAction="always"
-        android:title="disease consult"/>
+        android:title="Health Lifestyle"/>
 
     <item
         android:id="@+id/navigation_user_profile"
         android:icon="@drawable/user_profile"
         app:showAsAction="always"
-        android:title="user profile"/>
+        android:title="User Profile"/>
 
 </menu>
