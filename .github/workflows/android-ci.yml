@@ -28,6 +28,10 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
+    # 赋予 gradlew 可执行权限
+    - name: Grant execution permission for gradlew
+      run: chmod +x gradlew
+
     # 下载依赖项
     - name: Install dependencies
       run: ./gradlew dependencies
