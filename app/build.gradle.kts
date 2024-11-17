@@ -39,8 +39,14 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.core)
     testImplementation(libs.junit)
+    testImplementation(libs.ext.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.squareup.okhttp3:okhttp:4.9.3") // OkHttp
     testImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
+
+    // AndroidX Test dependencies
+    androidTestImplementation("androidx.test:core:1.4.0") // 核心库
+    androidTestImplementation("androidx.test.ext:junit:1.1.3") // JUnit 扩展
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0") // Espresso
 }
