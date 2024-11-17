@@ -1,0 +1,37 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检出代码
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 设置 Java 环境
+    - name: Setup JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+
+    # 设置 Android 环境
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
+    # 下载依赖项
+    - name: Install dependencies
+      run: ./gradlew dependencies
+
+    # 运行测试
+    - name: Run tests
+      run: ./gradlew testDebugUnitTest
