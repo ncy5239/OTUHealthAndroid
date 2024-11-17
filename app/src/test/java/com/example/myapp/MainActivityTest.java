@@ -36,7 +36,9 @@ public class MainActivityTest {
 
     @After
     public void tearDown() throws Exception {
-        mockWebServer.shutdown();
+        if (mockWebServer != null) {
+            mockWebServer.shutdown();
+        }
     }
 
     @Test
@@ -75,13 +77,15 @@ public class MainActivityTest {
         Response response = client.newCall(request).execute();
 
         // 检查是否登录成功
-        assertTrue(response.isSuccessful());
+        assertNotNull(response); // 确保响应不为 null
+        assertTrue(response.isSuccessful()); // 确保返回状态码为 2xx
+        assertNotNull(response.body()); // 确保响应体不为 null
 
         // 检查响应中是否包含 token
         String responseBody = response.body().string();
         JSONObject responseJson = new JSONObject(responseBody);
-        assertTrue(responseJson.has("token"));
-        assertEquals(mockToken, responseJson.getString("token"));
+        assertTrue(responseJson.has("token")); // 确保 JSON 中包含 "token"
+        assertEquals(mockToken, responseJson.getString("token")); // 验证 token 内容
 
         // 保存 token 到 SharedPreferences
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -95,3 +99,4 @@ public class MainActivityTest {
         assertEquals(mockToken, savedToken);
     }
 }
+
