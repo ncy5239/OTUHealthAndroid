@@ -17,20 +17,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 设置 Java 环境
+    # 设置 Java 环境为 Java 17
     - name: Setup JDK
       uses: actions/setup-java@v3
       with:
         distribution: 'zulu'
-        java-version: '11'
+        java-version: '17'
 
-    # 设置 Android 环境
+    # 设置 Android SDK
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
-
-    # 赋予 gradlew 可执行权限
-    - name: Grant execution permission for gradlew
-      run: chmod +x gradlew
 
     # 下载依赖项
     - name: Install dependencies
