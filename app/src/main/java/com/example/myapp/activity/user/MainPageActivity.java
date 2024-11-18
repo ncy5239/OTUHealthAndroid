@@ -24,7 +24,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainPageActivity extends AppCompatActivity {
 
-    private static final String WEB_URL = "http://otu-healthcare-h5.s3.us-east-2.amazonaws.com/index.html?email=";
+    private static final String WEB_URL = "http://otu-healthcare-h5.s3-website.us-east-2.amazonaws.com/?email=";
     private static final String PREFS_NAME = "MyAppPrefs";
     private static final String EMAIL_KEY = "user_email";
 

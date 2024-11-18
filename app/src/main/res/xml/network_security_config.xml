@@ -12,6 +12,9 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">otu-healthcare-h5.s3.us-east-2.amazonaws.com</domain>
     </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true"> otu-healthcare-h5.s3-website.us-east-2.amazonaws.com</domain>
+    </domain-config>
 
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">3.142.76.164</domain>
