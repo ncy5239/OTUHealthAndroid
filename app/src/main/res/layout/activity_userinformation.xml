@@ -7,172 +7,225 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@id/bottom_navigation"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="60dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/user_profile_head"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="User Profile"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            />
-
-        <EditText
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Full Name"
-            android:layout_marginTop="40dp"
-            android:inputType="textPersonName"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-        <RadioGroup
-            android:id="@+id/rg_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
-
-            <RadioButton
-                android:id="@+id/rb_male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/rb_female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female" />
-
-            <RadioButton
-                android:id="@+id/rb_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other" />
-
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/Age"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Age"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-        <EditText
-            android:id="@+id/Weight"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Weight /Lbs"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-        <EditText
-            android:id="@+id/Height"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Height /cm"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-        <EditText
-            android:id="@+id/systolic"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Blood Pressure: systolic"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-        <EditText
-            android:id="@+id/diastolic"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint = "Blood Pressure: diastolic"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
+            android:orientation="vertical"
+            android:paddingBottom="60dp">
 
-            <Button
-                android:id="@+id/user_profile_cancle"
-                android:layout_width="0dp"
+            <ImageView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancel"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_marginRight="5dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/user_profile_head"
                 />
 
-            <Button
-                android:id="@+id/user_profile_save"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="User Profile"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:gravity="center"
-                android:text="Save"/>
-        </LinearLayout>
+                />
 
-    </LinearLayout>
-</ScrollView>
+            <!-- Name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter your name"
+                android:layout_marginTop="4dp"
+                android:inputType="textPersonName"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Gender -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <RadioGroup
+                android:id="@+id/rg_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <RadioButton
+                    android:id="@+id/rb_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/rb_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:id="@+id/rb_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other" />
+            </RadioGroup>
+
+            <!-- Age -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/Age"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter your age"
+                android:layout_marginTop="4dp"
+                android:inputType="number"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Weight -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weight (lbs)"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/Weight"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter your weight"
+                android:layout_marginTop="4dp"
+                android:inputType="number"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Height -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Height (cm)"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/Height"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter your height"
+                android:layout_marginTop="4dp"
+                android:inputType="number"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Systolic -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Pressure (Systolic)"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/systolic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter systolic pressure"
+                android:layout_marginTop="4dp"
+                android:inputType="number"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Diastolic -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Pressure (Diastolic)"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/diastolic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter diastolic pressure"
+                android:layout_marginTop="4dp"
+                android:inputType="number"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <Button
+                    android:id="@+id/user_profile_cancle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cancel"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_marginRight="5dp"
+                    />
+
+                <Button
+                    android:id="@+id/user_profile_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:text="Save"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_navigation"
